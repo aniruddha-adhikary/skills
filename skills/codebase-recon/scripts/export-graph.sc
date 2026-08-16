@@ -60,8 +60,13 @@ import java.util.Base64
     u.contains("SELECT ") || u.contains("INSERT INTO") || u.contains("UPDATE ") || u.contains("DELETE FROM") }
   val t = w("sql.tsv"); t.println("method\tmodule\tline\tsql_b64")
   cpg.literal.filter(l => l.typeFullName == "java.lang.String" && sqlish(l.code)).foreach { l =>
+    // Lift ONLY through string concatenation. Lifting through any enclosing Call
+    // grabs the method call itself — `sqlBuilder.append("DELETE FROM X")` has code
+    // containing "DELETE FROM", so it passes the filter and, being longer than the
+    // literal, wins. You then export Java instead of SQL and every parse fails.
     val outer = l.inAst.collectAll[io.shiftleft.codepropertygraph.generated.nodes.Call]
-      .l.map(_.code).filter(sqlish).sortBy(-_.length).headOption.getOrElse(l.code)
+      .l.filter(_.name == "<operator>.addition")
+      .map(_.code).filter(sqlish).sortBy(-_.length).headOption.getOrElse(l.code)
     val m = l.method
     if (m != null) t.println(s"${m.fullName}\t${modOf(fileOf(m))}\t${l.lineNumber.getOrElse(-1)}\t${b64(outer)}")
   }
