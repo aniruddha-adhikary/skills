@@ -1,0 +1,26 @@
+{
+  "name": "modernizr",
+  "version": "0.1.0",
+  "description": "Interrogate and modernize a legacy codebase on measured evidence \u2014 a code property graph for structure, graph algorithms for decomposition, and solvers for the logic the graph cannot decide.",
+  "author": {
+    "name": "Aniruddha Adhikary"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "joern",
+    "code-property-graph",
+    "static-analysis",
+    "legacy-modernization",
+    "clone-detection",
+    "cpgql",
+    "graph-algorithms",
+    "smt",
+    "z3",
+    "refactoring"
+  ],
+  "skills": [
+    "./skills/codebase-recon",
+    "./skills/code-graph",
+    "./skills/code-symbolic"
+  ]
+}

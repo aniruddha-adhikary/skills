@@ -1,0 +1,50 @@
+{
+  "skill_name": "codebase-recon",
+  "evals": [
+    {
+      "id": 0,
+      "name": "dead-code-preconditions",
+      "prompt": "I'm doing a cleanup pass on the Java codebase at ~/Projects/corpora/jspwiki. Find me methods that are genuinely never called anywhere, so I can delete them. I want an actual list I can act on, and tell me how confident you are in it.",
+      "expected_output": "A dead-method list that accounts for the three preconditions: dependency jars, the dropped test tree, and container-implemented interfaces. Should exclude <init>/<clinit> (zero callIn by construction) and state confidence honestly rather than presenting a raw query result as fact.",
+      "files": [],
+      "assertions": [
+        "Excludes constructors and static initialisers (<init>/<clinit>) from the dead-method list, since these have zero callers by construction",
+        "Uses a jar-resolved CPG (or builds one with --inference-jar-paths) rather than a bare frontend graph",
+        "Accounts for the silently dropped test tree \u2014 either stages it before building or states that test-only callers are invisible",
+        "Names container/framework/reflective dispatch as a reason a method can look uncalled but not be dead",
+        "Verifies cpg.metaData.overlays is non-empty before treating a zero result as real",
+        "Delivers an actual actionable list of specific method names, not just a count or a method description",
+        "States confidence with a named, specific limitation rather than presenting the list as certain"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "module-coupling-routing",
+      "prompt": "I've just inherited ~/Projects/corpora/jspwiki and I need to understand how it's put together \u2014 which parts depend on which other parts. Give me the module dependency picture. Use whatever tooling makes sense.",
+      "expected_output": "Should recognise that a CPG buys almost nothing here \u2014 ripgrep over imports ties on 7 of 9 codebases \u2014 and either use the cheap tool or justify the expensive one. Bonus: routes toward the integration graph (shared tables/queues) as the coupling the call graph misses.",
+      "files": [],
+      "assertions": [
+        "Recognises that ripgrep over imports is competitive with a CPG for a module dependency graph, rather than assuming the CPG is better",
+        "Does not build a new CPG for the sole purpose of producing an import/module graph",
+        "Delivers a concrete dependency picture naming actual packages or modules and the edges between them",
+        "Mentions coupling the call graph misses (shared database tables, queues, files) as a distinct and often larger channel",
+        "Justifies the tool choice explicitly rather than reaching for Joern by default"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "many-queries-tooling",
+      "prompt": "I need to answer a batch of structural questions about the Java codebase at ~/Projects/corpora/mifos: how many classes and methods are there, what are the largest classes, is there dead code, and what SQL does it run? Work through them and give me the numbers.",
+      "expected_output": "Should use a resident server rather than paying a JVM start per question, verify overlays and CPG identity before trusting numbers, and caveat the method counts given that mifos loses 47.5% of its methods to the dropped test tree.",
+      "files": [],
+      "assertions": [
+        "Uses a resident Joern server for the batch rather than paying a JVM start per question",
+        "Verifies which CPG the server is actually holding before trusting the numbers it returns",
+        "Checks cpg.metaData.overlays before trusting call-graph or dataflow results",
+        "Caveats the class/method counts for the silently dropped test tree (mifos loses 47.5% of its methods)",
+        "Answers all four questions with concrete numbers",
+        "Extracts SQL via structured node properties (literals) rather than only a regex over raw source text"
+      ]
+    }
+  ]
+}

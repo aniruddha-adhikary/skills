@@ -1,0 +1,28 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ani-skills",
+  "description": "Aniruddha's agent skills and Claude Code plugins, grouped one plugin per domain.",
+  "owner": {
+    "name": "Aniruddha Adhikary"
+  },
+  "plugins": [
+    {
+      "name": "modernizr",
+      "description": "Interrogate and modernize a legacy codebase on measured evidence. Three skills: a code property graph for structure and for joining code to the config, SQL and templates it cannot see; graph algorithms for decomposition and seams; and solvers for thresholds, configuration equivalence and formula agreement.",
+      "source": "./plugins/modernizr",
+      "category": "engineering",
+      "keywords": [
+        "joern",
+        "code-property-graph",
+        "static-analysis",
+        "legacy-modernization",
+        "clone-detection",
+        "cpgql",
+        "graph-algorithms",
+        "smt",
+        "z3",
+        "refactoring"
+      ]
+    }
+  ]
+}

@@ -216,3 +216,24 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Research artifacts
+research/**/cpg.bin
+research/**/workspace/
+research/**/.scala-build/
+research/**/.bsp/
+research/**/.metals/
+research/_cpg/
+
+# scala-cli / Metals build state anywhere (local type-checking only, never shipped)
+.scala-build/
+.bsp/
+.metals/
+# joern imports write projects into $CWD/workspace
+workspace/
+
+# Not published: the research programme and how the skills were produced
+research/
+docs/
+modernizr-workspace/
+CLAUDE.local.md
