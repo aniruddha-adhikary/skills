@@ -20,6 +20,25 @@ The last check is the one that catches most silent damage. The frontend drops ni
 
 `--with-tests` renames test directories, builds, and restores them on exit. It refuses to run on a dirty git checkout, because an interrupted run would leave renamed directories in your diff.
 
+## Before you accept "it does not build"
+
+Two cheap moves, in this order, before concluding a codebase cannot be compiled. Both change what is available to you more than any query does.
+
+**Try an older JDK.** The most common blocker, and not a property of the code. Codebases that fail on 21 and on 11 build on 8 — one twelve-module system long written off compiles in twenty seconds.
+
+> Set `JAVA_HOME` for the one command rather than switching the toolchain default. That default is global mutable state; changing it will break a resident Joern server and anything else mid-flight.
+
+**Then try a tolerant compiler.** `ecj -proceedOnError` compiles what it can and stubs the rest, so source `javac` refuses still yields class files:
+
+```bash
+find <src> -name '*.java' > srcs.txt
+java -jar ecj.jar -8 -nowarn -proceedOnError -cp "<jars>" -d out/ @srcs.txt
+```
+
+On one 1,102-file codebase that does not build: 1,310 class files, two files with any error. A poisoned method keeps its signature, annotations and place in the hierarchy — only the body becomes a stub.
+
+**Why bother when the frontend reads source anyway.** Bytecode buys what source cannot: a bytecode graph resolves calls the source frontend leaves unresolved, `jimple2cpg` gives you framework *behaviour* rather than just signatures, and a template or codegen compiler usually needs the application's own compiled classes before it will translate anything. If a build looks impossible, that is worth ten minutes of testing before you plan around it.
+
 ## When dependency resolution looks impossible
 
 It usually is not. Across nine 2000s-era codebases, all nine reached at least 90% of their external artifacts. **You need jars, not a build**, so use `mvn dependency:copy-dependencies`, which skips compilation, plugins, codegen and tests.

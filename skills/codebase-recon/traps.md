@@ -105,6 +105,8 @@ Scope note: `--inference-jar-paths` fixes call *signatures*, not library *struct
 
 **A low global unresolved rate does not mean low *where your query looks*.** Unresolved signatures concentrate on private generic helpers, which is exactly the population a dead-code query examines — so a graph with an excellent overall rate still had a caller, in its own file, for half of the private zero-caller methods sampled. Two causes: a self-call rendered as an unresolved stub, and dropped `static {}` blocks leaving no call node at all. **Sample your own result set for the trap rate; the graph-wide average measures a different population.**
 
+**Generic interfaces defeat signature-equality matching, silently.** Pairing an interface method with its implementations by comparing signatures drops every generic one: the frontend erases the parameter type on the declaration and keeps the concrete type on the implementation, so the signatures differ and the pair vanishes with no error. Match on name and **arity**.
+
 **Modifier sets differ per frontend.** `cpg.method.isPublic` matches nothing on Python, because `pysrc2cpg` emits only `VIRTUAL`. Ask what your frontend emits before filtering: `cpg.method.internal.map(m => (m.name, m.modifier.modifierType.l)).l`.
 
 **A static method inherited from a superclass is not linked.** The call resolves only to a stub, so "who reads this parameter" comes back empty for most of its call sites. Fall back to a simple-name match when a callee is a body-less stub.

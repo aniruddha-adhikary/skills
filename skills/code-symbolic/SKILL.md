@@ -192,11 +192,15 @@ For oracles that need no correct answer — metamorphic relations, clone sibling
 
 ## When your variables are not boolean
 
-Everything above encodes each atom as true or false. That is right for a guard, and wrong for a configuration dimension with five settings, a status enum, or a priority level — encoding those as several booleans admits combinations the program cannot reach, and you then spend effort excluding them.
+Guards are boolean. Discriminators often are not — a status enum, a record type, a menu code. These are common: a key compared against three or more distinct literals appears in the low thousands across nine codebases.
 
-A **multi-valued decision diagram** is the same idea with a branch per value instead of two, and `dd.mdd` provides one alongside `bdd_to_mdd`. Reach for it when your atoms are genuinely n-ary and the boolean encoding is producing impossible states.
+**Do not one-hot them.** One variable per value forces you to hand-write every at-most-one exclusion — for one real five-dimension cluster that is 121 pairs — and if you skip them the model **silently returns wrong implications**. It is the encoding that looks obvious and fails quietly.
 
-**Untested here.** Every result in this skill came from a boolean encoding; the multi-valued route is a reasoned recommendation, not a measured one. Treat it as a lead.
+**Bit-blast instead.** Encode a domain of size n in ⌈log₂n⌉ boolean variables plus one in-range constraint. You keep an ordinary decision diagram, so counting, enumeration, restriction and expression parsing all still work, and the model stays small: on a domain of 256 the one-hot build took tens of seconds and tens of thousands of clauses; the log encoding took milliseconds.
+
+**A multi-valued decision diagram is the textbook answer and currently the wrong one.** The available implementation (`dd.mdd`) requires power-of-two domain sizes — so a 13-value domain becomes 16 with three dead values, reintroducing exactly the impossible states the MDD was supposed to remove — and it offers no counting, no enumeration, no restriction and no expression parser. Reach for one only when both hold: a decision that jointly constrains two or more dimensions of arity three or more, **and** a library with those operations. The first is rare — under one in a thousand conditions — so measure before you assume you have it.
+
+**Add an explicit `OTHER` value.** The domain is usually declared nowhere: a discriminator arrives from a `char(1) NOT NULL` column with no constraint, so the values you observed in the code are not the values the program can receive. Model the unrecognised case and the analysis will tell you what happens on it — which in one system was that a third of the menu was offered anyway, exactly as for a known-but-rare code. An encoding that asserts at-least-one over the observed values deletes that state and the finding with it.
 
 ## Build the atom table once
 

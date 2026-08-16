@@ -91,16 +91,21 @@ for a in nx.articulation_points(big):
     print(sum(len(f) for f in frags[1:]), a)      # sort on the first column
 ```
 
-**The facade you would have to write.** Join a super-source to everything inside the group and a super-sink to everything outside, then cut:
+**The facade you would have to write.** The boundary edges form a bipartite graph, and by König's theorem the minimum vertex cover of that graph *is* the minimum cut. Use it — it is the same answer, orders of magnitude faster:
 
 ```python
-h = g.copy()
-h.add_edges_from(("S", m) for m in inside)             # `inside` is your grouping —
-h.add_edges_from(("T", m) for m in set(g) - inside)    # modules.tsv, or anything else
-print(sorted(nx.minimum_node_cut(h, "S", "T")))
+from networkx.algorithms.bipartite import hopcroft_karp_matching, to_vertex_cover
+B = nx.Graph()
+B.add_edges_from((a, b) for a, b in g.edges if (a in inside) != (b in inside))
+left = [n for n in B if n in inside]
+facade = to_vertex_cover(B, hopcroft_karp_matching(B, top_nodes=left), top_nodes=left)
 ```
 
-On one module that returns a 57-method cut against 409 boundary edges. **Do not size a facade by counting boundary edges** — it overestimates by an order of magnitude.
+Measured against `nx.minimum_node_cut` with a super-source and super-sink on three modules: identical cut size every time, **28× to 316× faster** — 77 s down to 0.5 s on the largest.
+
+**Be honest about what the cut buys.** For *ranking* candidates it agrees almost perfectly with simply counting boundary edges, so it is not what decides which module to extract first. It earns its place on two other things: the **magnitude** — boundary-edge counts overstate the facade several-fold, which is the difference between "we cannot extract this" and a scoped job — and the **identity** of the cut set, because it names the specific methods you have to write.
+
+And check the cheap baseline before you build anything: counting *bidirectional* cross-module imports with ripgrep tracks the min-cut ranking closely. Counting them one-directionally inverts the answer.
 
 ## Overlapping groups: a concept lattice
 
