@@ -51,6 +51,15 @@ The plugin also ships **hooks**. They:
 - block a `curl` to the Joern server, which silently answers about a different codebase
 - advise on several trap-shaped queries
 
+### Coming next
+
+Not built yet. Both read the same graph and exports, so the evidence is the same — only the audience changes.
+
+- **Test case and test plan generation** → what a change can reach, what no test covers, and the cases that close the gap.
+- **Product and rollout planning** → what ships first, what it blocks, and how wide the blast radius is per stage.
+
+Names are not fixed.
+
 ## Install
 
 ```
