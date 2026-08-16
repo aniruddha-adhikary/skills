@@ -4,6 +4,10 @@ Read by Claude Code as `CLAUDE.md` and by other agents as `AGENTS.md` — the sa
 
 This repo is a **Claude Code plugin marketplace**. Each plugin covers one domain and carries its own skills. Plugins are the grouping mechanism — there are no bucket folders.
 
+**The thesis.** A coding agent is very good at reading, summarising and writing code, and structurally bad at exhaustive questions, whole-program reasoning, and anything that must hold over every input. Those were solved decades ago by program analysis, graph algorithms, solvers and computer algebra. A skill here usually exists to put one of those instruments in the agent's hand — including unorthodox uses, like running a template compiler so its output lands in the graph, or reading a framework's bytecode to recover what its config means. Old tricks, new hat.
+
+The corollary matters as much: a skill must also say when the instrument is *worse* than a grep, and mean it.
+
 ## Layout
 
 ```

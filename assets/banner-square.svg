@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200"
-     role="img" aria-label="modernizr — three stages over one codebase, stacked: a code property graph with syntax, control and data edges; the same graph cut at its narrowest boundary; and a proof that a rule in the surviving logic can never fire.">
+     role="img" aria-label="modernizr — three stages over one codebase, stacked: a code property graph with syntax, control and data edges; the two domains it divides into, meeting at a single function; and a proof that two branches of its logic are identical, so they merge into one.">
   <defs>
     <marker id="dn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#7d8590"/>
@@ -10,18 +10,18 @@
   <rect x="0" y="0" width="1200" height="4" fill="#f0b429"/>
 
   <!-- ───────────────────────────── header ──────────────────────────── -->
-  <text x="96" y="182" fill="#e6edf3" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace"
+  <text x="96" y="182" fill="#e6edf3" font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace"
         font-size="96" font-weight="700" letter-spacing="-3">modernizr</text>
   <rect x="98" y="222" width="108" height="5" fill="#f0b429"/>
 
-  <text x="96" y="298" fill="#e6edf3" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="34">
-    Some answers are not
+  <text x="96" y="298" fill="#e6edf3" font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="34">
+    Old tricks,
   </text>
-  <text x="96" y="344" fill="#e6edf3" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="34">
-    in any one file.
+  <text x="96" y="344" fill="#e6edf3" font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="34">
+    new hat.
   </text>
-  <text x="96" y="392" fill="#7d8590" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="21">
-    Build the graph once. Ask it anything.
+  <text x="96" y="392" fill="#7d8590" font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="21">
+    Program analysis, meet the coding agent.
   </text>
 
   <!-- ─────────────────────── 1 · locate ────────────────────────────── -->
@@ -36,7 +36,7 @@
       <circle cx="146" cy="70" r="8"/><circle cx="88" cy="124" r="8"/>
     </g>
   </g>
-  <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">
+  <g font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace">
     <text x="470" y="516" fill="#e6edf3" font-size="30" font-weight="700">map</text>
     <text x="470" y="562" font-size="22"><tspan fill="#adbac7">syntax&#160;&#160;</tspan><tspan fill="#58a6ff">control&#160;&#160;</tspan><tspan fill="#3fb950">data</tspan></text>
     <text x="470" y="596" fill="#f0b429" font-size="22">one graph, all at once</text>
@@ -58,10 +58,10 @@
     </g>
     <path d="M88,24 L 88,146" stroke="#f85149" stroke-width="1.8" stroke-dasharray="8 6"/>
   </g>
-  <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">
-    <text x="470" y="770" fill="#e6edf3" font-size="30" font-weight="700">cut</text>
-    <text x="470" y="816" fill="#adbac7" font-size="22">pulling these apart:</text>
-    <text x="470" y="850" fill="#f0b429" font-size="22">one function</text>
+  <g font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace">
+    <text x="470" y="770" fill="#e6edf3" font-size="30" font-weight="700">split</text>
+    <text x="470" y="816" fill="#adbac7" font-size="22">two domains meet</text>
+    <text x="470" y="850" fill="#f0b429" font-size="22">isolate one and plan</text>
   </g>
 
   <line x1="255" y1="876" x2="255" y2="926" stroke="#7d8590" stroke-width="1.8" marker-end="url(#dn)"/>
@@ -79,21 +79,21 @@
     <g fill="#0b0f16" stroke="#8b949e" stroke-width="2">
       <circle cx="62" cy="36" r="10"/><circle cx="96" cy="82" r="10"/><circle cx="34" cy="112" r="10"/>
     </g>
-    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13"
+    <g font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13"
        fill="#adbac7" text-anchor="middle">
       <text x="62" y="41">a</text><text x="96" y="87">b</text><text x="34" y="117">c</text>
     </g>
     <rect x="6"  y="142" width="27" height="20" rx="3" fill="#0b0f16" stroke="#f85149" stroke-width="1.8"/>
     <rect x="87" y="142" width="27" height="20" rx="3" fill="#0b0f16" stroke="#3fb950" stroke-width="1.8"/>
-    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" text-anchor="middle">
+    <g font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" text-anchor="middle">
       <text x="19"  y="157" fill="#f85149">0</text>
       <text x="100" y="157" fill="#3fb950">1</text>
     </g>
   </g>
-  <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace">
+  <g font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace">
     <text x="470" y="1004" fill="#e6edf3" font-size="30" font-weight="700">prove</text>
-    <text x="470" y="1050" fill="#adbac7" font-size="22">does the rule fire?</text>
-    <text x="470" y="1084" fill="#f0b429" font-size="22">checked for all inputs</text>
+    <text x="470" y="1050" fill="#adbac7" font-size="22">the same rule twice?</text>
+    <text x="470" y="1084" fill="#f0b429" font-size="22">proved, then merged</text>
     <g stroke-width="1.8" fill="none">
       <path d="M470,1114 L 496,1114" stroke="#8b949e"/>
       <path d="M640,1114 L 666,1114" stroke="#4d5866" stroke-dasharray="5 4"/>
@@ -106,11 +106,11 @@
 
   <!-- ───────────────────────────── footer ──────────────────────────── -->
   <rect x="96" y="1146" width="1008" height="1" fill="#21262d"/>
-  <text x="96" y="1180" fill="#57606a" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="18">
+  <text x="96" y="1180" fill="#57606a" font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="18">
     codebase-recon &#183; code-graph &#183; code-symbolic
   </text>
   <text x="1104" y="1180" fill="#f0b429" text-anchor="end"
-        font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="18">
+        font-family="'JetBrains Mono','JetBrains Mono NL',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="18">
     a Claude Code plugin
   </text>
 </svg>

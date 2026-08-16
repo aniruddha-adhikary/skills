@@ -5,6 +5,8 @@ description: Work out what an unfamiliar or legacy codebase actually does, and w
 
 # Joern analysis
 
+An agent reads files. That is right more often than not — and hopeless for absence, for whole-program questions, and for behaviour that lives in XML, SQL or templates rather than in code. This skill puts a code property graph in the agent's hand for exactly those, and tells it when to put the graph down again.
+
 Joern builds a **Code Property Graph** — AST, control-flow graph and program-dependence graph merged into one queryable graph — with a Scala DSL to traverse it. Its reputation is vulnerability hunting. That is one application of a general capability: asking a codebase questions that neither grep nor reading can answer.
 
 ## Before anything else

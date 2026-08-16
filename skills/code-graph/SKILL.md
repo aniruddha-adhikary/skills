@@ -5,6 +5,8 @@ description: Decide where to break a system apart, on evidence. Use when splitti
 
 # Graph algorithms on code
 
+Decomposition questions — where to cut, how big the interface is, what genuinely overlaps — are graph problems, and graph theory answered them long before anyone asked an LLM. Export the code property graph and point the classical algorithms at it. Several famous ones fail badly on code; this says which, and what to use instead.
+
 **Depends on `codebase-recon`.** Build a graph worth trusting and export it first:
 
 ```bash

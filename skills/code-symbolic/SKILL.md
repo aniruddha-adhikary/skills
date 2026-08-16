@@ -5,6 +5,8 @@ description: Decide questions about a codebase's logic that reading and traversa
 
 # Solvers and computer algebra over code
 
+No amount of reading establishes that something holds for *every* input. Solvers and computer algebra have done that for decades. The graph finds where the logic is; z3, a decision diagram or sympy decides what it means.
+
 **Depends on `codebase-recon`.** The graph finds *where* the logic is. These tools decide *what it means*.
 
 ## Which of the three skills you want
