@@ -23,6 +23,19 @@
         "z3",
         "refactoring"
       ]
+    },
+    {
+      "name": "scale-engineering",
+      "description": "Plan, scope and build software work by class instead of instance: find the families, split slot from slottable entity, verify first, write the generator, and fix at the class level.",
+      "source": "./plugins/scale-engineering",
+      "category": "engineering",
+      "keywords": [
+        "scoping",
+        "codemods",
+        "generators",
+        "migration",
+        "ai-cost"
+      ]
     }
   ]
 }
