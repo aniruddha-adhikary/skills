@@ -25,7 +25,7 @@ AGENTS.md                           symlink to this file, for agents that look f
 
 **Skills live at the repo root, in `skills/`.** A plugin cannot reference a path containing `..` — validation rejects it as traversal — so each plugin carries a symlink per skill instead. Edit under `skills/`; the plugin picks the change up through the link, and one skill can belong to several plugins without being copied.
 
-Currently one plugin, **modernizr**, with three skills: `codebase-recon` (build and query a code property graph, and join it to the config, SQL and templates it cannot see), `code-graph` (graph algorithms over its export), and `code-symbolic` (solvers and computer algebra over its extracted facts). The two siblings depend on the first and say so in their frontmatter, because Claude Code has no formal skill-dependency field.
+Currently two plugins. **scale-engineering** carries one skill of the same name: a method for scoping, sizing and building work by class instead of instance, with no scripts or dependencies. **modernizr** carries three skills: `codebase-recon` (build and query a code property graph, and join it to the config, SQL and templates it cannot see), `code-graph` (graph algorithms over its export), and `code-symbolic` (solvers and computer algebra over its extracted facts). The two siblings depend on the first and say so in their frontmatter, because Claude Code has no formal skill-dependency field.
 
 Adding a plugin means a directory under `plugins/` **and** an entry in `.claude-plugin/marketplace.json`. Adding a skill means a directory under `skills/`, a symlink to it under that plugin's `skills/`, **and** an entry in its `plugin.json`. Run `claude plugin validate . --strict` after touching either manifest.
 

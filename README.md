@@ -51,7 +51,25 @@ The plugin also ships **hooks**. They:
 - block a `curl` to the Joern server, which silently answers about a different codebase
 - advise on several trap-shaped queries
 
-### Coming next
+## [scale-engineering](./plugins/scale-engineering)
+
+**When the same shape repeats N times, do not scope it N times.**
+
+Pages, forms, rules, endpoints, reports, migration targets. Scoped one per ticket, each engineer pays a strong model to think the same thoughts again, and AI cost tracks headcount.
+
+[scale-engineering](./skills/scale-engineering/SKILL.md) moves the unit of work to the class:
+
+- **Find the families** → group instances by how they vary; a human confirms each family, and the leftovers are the long tail.
+- **Split slot from slottable entity** → build the shared part once, keep only what varies as configuration.
+- **Verify first** → differential tests for a migration, per-family specs for new work.
+- **Write the generator** → AI writes the codemod, deterministic tools run it.
+- **Fix the generator, never one output** → rerun on every instance.
+
+It also sizes the work (`foundation + generator + cost per instance × N + long tail`, then the break-even N) and says when to skip the approach: small N, parity work nobody needs, weak verification, unconfirmed families.
+
+It is pure method and needs nothing installed. On a legacy codebase, `modernizr` can find the families for it.
+
+### Coming next (modernizr)
 
 Not built yet. Both read the same graph and exports, so the evidence is the same — only the audience changes.
 
@@ -65,9 +83,10 @@ Names are not fixed.
 ```
 /plugin marketplace add aniruddha-adhikary/skills
 /plugin install modernizr@ani-skills
+/plugin install scale-engineering@ani-skills
 ```
 
-That installs all three skills and the hooks.
+`modernizr` installs three skills and the hooks. `scale-engineering` installs one skill.
 
 For local development, symlink every skill into `~/.claude/skills`:
 
